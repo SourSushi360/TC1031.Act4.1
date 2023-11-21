@@ -50,3 +50,8 @@ void Vertice::setEstado(bool estado) {
 void Vertice::setConjunto(bool conjunto) {
     *this->conjunto = conjunto;
 }
+    // métodos
+void Vertice::agregaArista(int destino, double peso) {
+    Par par(destino,peso);
+    this->aristas.push_back(par);
+}
