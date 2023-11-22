@@ -19,7 +19,7 @@ Par::~Par() {
     delete this->peso;
 }
 
-//Vertice
+// Vertice
 Vertice::Vertice() {
     this->valor = new int;
     this->estado = new bool;
@@ -54,4 +54,22 @@ void Vertice::setConjunto(bool conjunto) {
 void Vertice::agregaArista(int destino, double peso) {
     Par par(destino,peso);
     this->aristas.push_back(par);
+}
+
+// Grafo
+Grafo::Grafo() {
+    this->vertices = new Vertice;
+    this->numVertices = new int;
+    this->numAristas = new int;
+    *this->matriz = new double;
+}
+Grafo::~Grafo() {
+    delete this->vertices;
+    delete this->numVertices;
+    delete this->numAristas;
+    delete *this->matriz;
+}
+    // métodos
+void Grafo::loadGraph(int numVertices, int numAristas, double **matrizAdjacencia) {
+    
 }
