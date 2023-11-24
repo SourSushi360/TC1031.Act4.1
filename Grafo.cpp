@@ -70,6 +70,25 @@ Grafo::~Grafo() {
     delete *this->matriz;
 }
     // métodos
-void Grafo::loadGraph(int numVertices, int numAristas, double **matrizAdjacencia) {
-    
+        //Carga los vértices del grafo y los almacene en una Lista de Adjacencia de Aristas
+        //a partir de la matriz de adyacencias proporcionada.
+void Grafo::loadGraph(int numVertices, int numAristas, double **matrizAdjacencia) {   
+}
+        //Realiza búsqueda en profundidad e imprime 
+        //los id de los vértices recorridos separados por comas
+void Grafo::dfs(int verticeInicial) {
+}
+        //Realiza búsqueda en amplitud e imprime
+        //los id de los vértices recorridos separados por comas
+void Grafo::bfs(int verticeInicial) {
+}
+        //Regresa true si el Grafo Dirigido Acíclico (DAG) es un árbol
+        //Nota, el grafo proporcionado deberá ser un DAG.
+bool Grafo::isTree() {
+}
+        //Regresa true si el DAG proporcionado es un grafo Bipartita
+bool Grafo::isBipartiteGraph(int numVertices, int numAristas, double **matrizAdjacencia) {
+}
+        //Imprime la lista de vértices del (DAG) ordenados topológicamente separados por comas
+void Grafo::topologicalSort(int numVertices, int numAristas, double **matrizAdjacencia) {
 }
