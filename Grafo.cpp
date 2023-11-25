@@ -59,10 +59,10 @@ void Vertice::agregaArista(int destino, double peso) {
 
 // Grafo
 Grafo::Grafo() {
-    this->vertices = new Vertice;
+    this->vertices = nullptr;
     this->numVertices = new int;
     this->numAristas = new int;
-    *this->matriz = new double;
+    *this->matriz = nullptr;
 }
 Grafo::~Grafo() {
     delete this->numVertices;
@@ -77,15 +77,16 @@ Grafo::~Grafo() {
         //Carga los vértices del grafo y los almacene en una Lista de Adjacencia de Aristas
         //a partir de la matriz de adyacencias proporcionada.
 void Grafo::loadGraph(int numVertices, int numAristas, double **matrizAdjacencia) {   
-    this->vertices = new Vertice[numVertices];
     *this->numVertices = numVertices;
     *this->numAristas = numAristas;
+
+    this->vertices = new Vertice[numVertices];
+    this->matriz = new double*[numVertices];
     for (int i = 0; i < numVertices; ++i) {
+        this->matriz[i] = new double[numVertices];
         for (int j = 0; j < numVertices; ++j) {
             this->matriz[i][j] = matrizAdjacencia[i][j];
-            
         }
-        this->vertices[i].setValor(i);
     }
 }
         //Realiza búsqueda en profundidad e imprime 
