@@ -8,6 +8,7 @@
     - Vertice
     -Grafo */
 #include "Grafo.hpp"
+#include <iostream>
 
 // Par
 Par::Par(int destino, double peso) {
@@ -22,8 +23,8 @@ Par::~Par() {
 // Vertice
 Vertice::Vertice() {
     this->valor = new int;
-    this->estado = new bool;
-    this->conjunto = new bool;
+    this->estado = new bool(false);
+    this->conjunto = new bool(false);
 }
 Vertice::~Vertice() {
     delete valor;
@@ -64,16 +65,28 @@ Grafo::Grafo() {
     *this->matriz = new double;
 }
 Grafo::~Grafo() {
-    delete this->vertices;
     delete this->numVertices;
     delete this->numAristas;
-    delete *this->matriz;
+    delete[] vertices;
+    for (int i = 0; i < *numVertices; ++i) {
+        delete[] matriz[i];
+    }
+    delete[] matriz;
 }
     // métodos
         //Carga los vértices del grafo y los almacene en una Lista de Adjacencia de Aristas
         //a partir de la matriz de adyacencias proporcionada.
 void Grafo::loadGraph(int numVertices, int numAristas, double **matrizAdjacencia) {   
-    
+    this->vertices = new Vertice[numVertices];
+    *this->numVertices = numVertices;
+    *this->numAristas = numAristas;
+    for (int i = 0; i < numVertices; ++i) {
+        for (int j = 0; j < numVertices; ++j) {
+            this->matriz[i][j] = matrizAdjacencia[i][j];
+            
+        }
+        this->vertices[i].setValor(i);
+    }
 }
         //Realiza búsqueda en profundidad e imprime 
         //los id de los vértices recorridos separados por comas
@@ -86,6 +99,7 @@ void Grafo::bfs(int verticeInicial) {
         //Regresa true si el Grafo Dirigido Acíclico (DAG) es un árbol
         //Nota, el grafo proporcionado deberá ser un DAG.
 bool Grafo::isTree() {
+
 }
         //Regresa true si el DAG proporcionado es un grafo Bipartita
 bool Grafo::isBipartiteGraph(int numVertices, int numAristas, double **matrizAdjacencia) {

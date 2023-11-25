@@ -1,2 +1,3 @@
 # carpetas que ignora
 /build
+/.vscode
