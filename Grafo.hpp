@@ -106,6 +106,8 @@ class Vertice{
 
         bool getConjunto();
 
+         std::list<Par> getArista();
+
 };
 
 class Grafo{
