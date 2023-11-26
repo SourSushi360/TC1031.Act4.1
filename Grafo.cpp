@@ -89,7 +89,7 @@ void Grafo::loadGraph(int numVertices, int numAristas, double **matrizAdjacencia
         this->matriz[i] = new double[numVertices];
         for (int j = 0; j < numVertices; ++j) {
             this->matriz[i][j] = matrizAdjacencia[i][j];
-            if (matrizAdjacencia[i][j] != std::numeric_limits<double>::infinity()) {
+            if (matrizAdjacencia[i][j] == 0) {
               this->vertices[i].agregaArista(j, matrizAdjacencia[i][j]);
             }
         }
@@ -116,7 +116,7 @@ void Grafo::dfs(int verticeInicial) {
 
             // Agregar los vértices adyacentes no visitados a la pila
             for (int i = 0;i < *this->numVertices;i++) {
-                if (this->matriz[verticeActual.getValor()][i] != std::numeric_limits<double>::infinity()
+                if (this->matriz[verticeActual.getValor()][i] == 0
                 && !this->matriz[verticeActual.getEstado()][i]) {
                     pila.push(this->vertices[i]);
                 }
@@ -146,7 +146,7 @@ void Grafo::bfs(int verticeInicial) {
 
             // Agregar los vértices adyacentes no visitados a la pila
             for (int i = 0;i < *this->numVertices;i++) {
-                if (this->matriz[verticeActual.getValor()][i] != std::numeric_limits<double>::infinity()
+                if (this->matriz[verticeActual.getValor()][i] == 0
                 && !this->matriz[verticeActual.getEstado()][i]) {
                     cola.push(this->vertices[i]);
                 }
@@ -157,10 +157,23 @@ void Grafo::bfs(int verticeInicial) {
         //Regresa true si el Grafo Dirigido Acíclico (DAG) es un árbol
         //Nota, el grafo proporcionado deberá ser un DAG.
 bool Grafo::isTree() {
-    
+    for (int i = 0;i < *this->numVertices;i++) {
+        this->vertices[i].setEstado(false);
+    }
 }
         //Regresa true si el DAG proporcionado es un grafo Bipartita
 bool Grafo::isBipartiteGraph(int numVertices, int numAristas, double **matrizAdjacencia) {
+    for (int i = 0;i < *this->numVertices;i++) {
+        this->vertices[i].setEstado(false);
+    }
+    vertices[0].setEstado(true);
+    for (int i = 0;i < numVertices;i++) {
+        for (int j = 0;j < numVertices;j++) {
+            if (matrizAdjacencia[i][j] == 0) {
+
+            }
+        }
+    }
 }
         //Imprime la lista de vértices del (DAG) ordenados topológicamente separados por comas
 void Grafo::topologicalSort(int numVertices, int numAristas, double **matrizAdjacencia) {
