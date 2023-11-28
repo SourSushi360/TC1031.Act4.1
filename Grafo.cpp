@@ -101,29 +101,33 @@ void Grafo::dfs(int verticeInicial) {
   for (int i = 0; i < *this->numVertices; i++) {
     this->vertices[i].setEstado(false);
   }
+  // Ensure the vertex index is valid
+  if (verticeInicial < 0 || verticeInicial >= *numVertices) {
+    std::cerr << "Invalid starting vertex for DFS." << std::endl;
+    return;
+  }
 
-  std::stack<Vertice> pila;
-  pila.push(vertices[verticeInicial]);
-  Vertice verticeActual;
-  // Iterar hasta que la pila esté vacía
-  while (!pila.empty()) {
-    verticeActual = pila.top();
-    pila.pop();
-    // Si el vértice no ha sido visitado marcar el vértice como visitado e
-    // imprimir su ID
-    if (!verticeActual.getEstado()) {
-      verticeActual.setEstado(true);
-      std::cout << verticeActual.getValor() << ", ";
+  std::stack<int> stack;
+  stack.push(verticeInicial);
 
-      // Agregar los vértices adyacentes no visitados a la pila
-      for (int i = 0; i < *this->numVertices; i++) {
-        if (this->matriz[verticeActual.getValor()][i] == 0 &&
-            !this->matriz[verticeActual.getEstado()][i]) {
-          pila.push(this->vertices[i]);
+  while (!stack.empty()) {
+    int currentVertex = stack.top();
+    stack.pop();
+
+    if (!vertices[currentVertex].getEstado()) {
+      std::cout << currentVertex << ", ";
+      vertices[currentVertex].setEstado(true);
+
+      // Push adjacent vertices onto the stack
+      for (int i = 0; i < *numVertices; ++i) {
+        if (matriz[currentVertex][i] != 0 && !vertices[i].getEstado()) {
+          stack.push(i);
         }
       }
     }
   }
+
+  std::cout << std::endl;
 }
 // Realiza búsqueda en amplitud e imprime
 // los id de los vértices recorridos separados por comas
@@ -133,30 +137,33 @@ void Grafo::bfs(int verticeInicial) {
   for (int i = 0; i < *this->numVertices; i++) {
     this->vertices[i].setEstado(false);
   }
+  // Ensure the vertex index is valid
+  if (verticeInicial < 0 || verticeInicial >= *numVertices) {
+    std::cerr << "Invalid starting vertex for BFS." << std::endl;
+    return;
+  }
 
-  // Utilizar una cola para la búsqueda en amplitud
-  std::queue<Vertice> cola;
-  cola.push(this->vertices[verticeInicial]);
-  Vertice verticeActual;
-  // Iterar hasta que la pila esté vacía
-  while (!cola.empty()) {
-    verticeActual = cola.front();
-    cola.pop();
-    // Si el vértice no ha sido visitado marcar el vértice como visitado e
-    // imprimir su ID
-    if (!verticeActual.getEstado()) {
-      verticeActual.setEstado(true);
-      std::cout << verticeActual.getValor() << ", ";
+  std::queue<int> queue;
+  queue.push(verticeInicial);
 
-      // Agregar los vértices adyacentes no visitados a la pila
-      for (int i = 0; i < *this->numVertices; i++) {
-        if (this->matriz[verticeActual.getValor()][i] == 0 &&
-            !this->matriz[verticeActual.getEstado()][i]) {
-          cola.push(this->vertices[i]);
+  while (!queue.empty()) {
+    int currentVertex = queue.front();
+    queue.pop();
+
+    if (!vertices[currentVertex].getEstado()) {
+      std::cout << currentVertex << ", ";
+      vertices[currentVertex].setEstado(true);
+
+      // Enqueue adjacent vertices
+      for (int i = 0; i < *numVertices; ++i) {
+        if (matriz[currentVertex][i] != 0 && !vertices[i].getEstado()) {
+          queue.push(i);
         }
       }
     }
   }
+
+  std::cout << std::endl;
 }
 
 std::list<Par> Vertice::getArista() { return this->aristas; }

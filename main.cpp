@@ -32,21 +32,12 @@ std::cout << cc << '\n'; cc++;
 
     // Ejemplo de uso de funciones
     std::cout << "DFS: ";
-    // miGrafo.dfs(0);
-    std::cout << std::endl;
-
-    Vertice *vertices;
-    vertices = new Vertice[10];
-    vertices[0].setValor(1);
-    vertices[0].agregaArista(2,2.0);
-    Vertice vertice = vertices[0];
-    std::cout << vertice.getValor();
-    /*
+    miGrafo.dfs(0);
 
     std::cout << "BFS: ";
     miGrafo.bfs(0);
-    std::cout << std::endl;
 
+/*
     std::cout << "Is Tree: " << std::boolalpha << miGrafo.isTree() << std::endl;
 
     std::cout << "Is Bipartite: " << std::boolalpha << miGrafo.isBipartiteGraph(numVertices, numAristas, matrizAdjacencia) << std::endl;
