@@ -15,8 +15,8 @@
 // Complejidad : O(1)
 //  Par
 Par::Par(int destino, double peso) {
-  *this->destino = destino;
-  *this->peso = peso;
+  this->destino = new int(destino);
+  this->peso = new double(peso);
 }
 // Complejidad : O(1)
 Par::~Par() {
