@@ -37,7 +37,6 @@ std::cout << cc << '\n'; cc++;
     std::cout << "BFS: ";
     miGrafo.bfs(0);
 
-/*
     std::cout << "Is Tree: " << std::boolalpha << miGrafo.isTree() << std::endl;
 
     std::cout << "Is Bipartite: " << std::boolalpha << miGrafo.isBipartiteGraph(numVertices, numAristas, matrizAdjacencia) << std::endl;
@@ -50,7 +49,6 @@ std::cout << cc << '\n'; cc++;
         delete[] matrizAdjacencia[i];
     }
     delete[] matrizAdjacencia;
-    */
 
     return 0;
 }
