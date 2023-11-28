@@ -2,6 +2,8 @@
 #include <iostream>
 
 int main() {
+    int cc = 0;
+
     // Crear un grafo de ejemplo
     int numVertices = 6;
     int numAristas = 7;
@@ -24,7 +26,9 @@ int main() {
 
     // Crear el objeto Grafo
     Grafo miGrafo;
+std::cout << cc << '\n'; cc++;
     miGrafo.loadGraph(numVertices, numAristas, matrizAdjacencia);
+std::cout << cc << '\n'; cc++;
 
     // Ejemplo de uso de funciones
     std::cout << "DFS: ";
