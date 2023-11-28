@@ -26,9 +26,7 @@ int main() {
 
     // Crear el objeto Grafo
     Grafo miGrafo;
-std::cout << cc << '\n'; cc++;
     miGrafo.loadGraph(numVertices, numAristas, matrizAdjacencia);
-std::cout << cc << '\n'; cc++;
 
     // Ejemplo de uso de funciones
     std::cout << "DFS: ";

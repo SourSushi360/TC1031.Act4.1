@@ -101,27 +101,25 @@ void Grafo::dfs(int verticeInicial) {
   for (int i = 0; i < *this->numVertices; i++) {
     this->vertices[i].setEstado(false);
   }
-  // Ensure the vertex index is valid
   if (verticeInicial < 0 || verticeInicial >= *numVertices) {
     std::cerr << "Invalid starting vertex for DFS." << std::endl;
     return;
   }
 
-  std::stack<int> stack;
-  stack.push(verticeInicial);
+  std::stack<int> pila;
+  pila.push(verticeInicial);
 
-  while (!stack.empty()) {
-    int currentVertex = stack.top();
-    stack.pop();
+  while (!pila.empty()) {
+    int verticeActual = pila.top();
+    pila.pop();
 
-    if (!vertices[currentVertex].getEstado()) {
-      std::cout << currentVertex << ", ";
-      vertices[currentVertex].setEstado(true);
+    if (!vertices[verticeActual].getEstado()) {
+      std::cout << verticeActual << ", ";
+      vertices[verticeActual].setEstado(true);
 
-      // Push adjacent vertices onto the stack
       for (int i = 0; i < *numVertices; ++i) {
-        if (matriz[currentVertex][i] != 0 && !vertices[i].getEstado()) {
-          stack.push(i);
+        if (matriz[verticeActual][i] != 0 && !vertices[i].getEstado()) {
+          pila.push(i);
         }
       }
     }
@@ -137,27 +135,25 @@ void Grafo::bfs(int verticeInicial) {
   for (int i = 0; i < *this->numVertices; i++) {
     this->vertices[i].setEstado(false);
   }
-  // Ensure the vertex index is valid
   if (verticeInicial < 0 || verticeInicial >= *numVertices) {
     std::cerr << "Invalid starting vertex for BFS." << std::endl;
     return;
   }
 
-  std::queue<int> queue;
-  queue.push(verticeInicial);
+  std::queue<int> cola;
+  cola.push(verticeInicial);
 
-  while (!queue.empty()) {
-    int currentVertex = queue.front();
-    queue.pop();
+  while (!cola.empty()) {
+    int verticeActual = cola.front();
+    cola.pop();
 
-    if (!vertices[currentVertex].getEstado()) {
-      std::cout << currentVertex << ", ";
-      vertices[currentVertex].setEstado(true);
+    if (!vertices[verticeActual].getEstado()) {
+      std::cout << verticeActual << ", ";
+      vertices[verticeActual].setEstado(true);
 
-      // Enqueue adjacent vertices
       for (int i = 0; i < *numVertices; ++i) {
-        if (matriz[currentVertex][i] != 0 && !vertices[i].getEstado()) {
-          queue.push(i);
+        if (matriz[verticeActual][i] != 0 && !vertices[i].getEstado()) {
+          cola.push(i);
         }
       }
     }
