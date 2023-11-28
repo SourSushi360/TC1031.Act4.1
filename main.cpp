@@ -34,6 +34,7 @@ std::cout << cc << '\n'; cc++;
     std::cout << "DFS: ";
     miGrafo.dfs(0);
     std::cout << std::endl;
+    /*
 
     std::cout << "BFS: ";
     miGrafo.bfs(0);
@@ -51,6 +52,7 @@ std::cout << cc << '\n'; cc++;
         delete[] matrizAdjacencia[i];
     }
     delete[] matrizAdjacencia;
+    */
 
     return 0;
 }
