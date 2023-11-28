@@ -28,8 +28,8 @@ Par::~Par() {
 //  Vertice
 Vertice::Vertice() {
   this->valor = new int;
-  this->estado = new bool;
-  this->conjunto = new bool;
+  this->estado = new bool(false);
+  this->conjunto = new bool(false);
 }
 // Complejidad : O(1)
 Vertice::~Vertice() {

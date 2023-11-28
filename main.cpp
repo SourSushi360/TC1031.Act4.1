@@ -32,8 +32,15 @@ std::cout << cc << '\n'; cc++;
 
     // Ejemplo de uso de funciones
     std::cout << "DFS: ";
-    miGrafo.dfs(0);
+    // miGrafo.dfs(0);
     std::cout << std::endl;
+
+    Vertice *vertices;
+    vertices = new Vertice[10];
+    vertices[0].setValor(1);
+    vertices[0].agregaArista(2,2.0);
+    Vertice vertice = vertices[0];
+    std::cout << vertice.getValor();
     /*
 
     std::cout << "BFS: ";
